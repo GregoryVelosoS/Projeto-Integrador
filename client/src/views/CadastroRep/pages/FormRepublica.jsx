@@ -16,7 +16,7 @@ const FormRepublica = () => {
   });
 
   const [features, setFeatures] = useState([]);
-  const { objetoProjeto, setobjetoProjeto } = useObjeto();
+  const { objetoProjeto, setObjetoProjeto } = useObjeto();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const FormRepublica = () => {
       alert("Efetue Login");
       navigate("/login");
     } else {
-      setobjetoProjeto((prev) => ({
+      setObjetoProjeto((prev) => ({
         ...prev,
         id_usuario: idUsuario,
       }));
@@ -39,14 +39,16 @@ const FormRepublica = () => {
   };
 
   useEffect(() => {
-    setobjetoProjeto((prev) => ({
+    setObjetoProjeto((prev) => ({
       ...prev,
       Features: features,
     }));
   }, [features]);
 
   const validarDados = (dados) => {
-    const camposObrigatorios = ["name", "pais", "cep", "endereco", "bairro", "cidade", "estado"];
+    console.log(objetoProjeto);
+    
+    const camposObrigatorios = ["pais", "cep", "endereco", "bairro", "cidade", "estado"];
     for (let campo of camposObrigatorios) {
       if (!dados[campo] || dados[campo].trim() === "") {
         alert(`O campo ${campo} é obrigatório.`);
@@ -57,6 +59,7 @@ const FormRepublica = () => {
   };
 
   const cadastrarRepublica = async (infoRepublica) => {
+    
     const essentialInfoFormatted = {
       ...essentialInfo,
       Participantes: parseInt(essentialInfo.Participantes, 10) || 0,
@@ -68,7 +71,7 @@ const FormRepublica = () => {
     };
 
     const formData = new FormData();
-    formData.append("infoRepublica", JSON.stringify(objetoProjetoFinal));
+    formData.append("infoprojeto", JSON.stringify(objetoProjetoFinal));
 
     if (objetoProjeto?.image) {
       formData.append("image", objetoProjeto.image);
@@ -78,6 +81,9 @@ const FormRepublica = () => {
       alert("Dados inválidos. Verifique as informações fornecidas.");
       return;
     }
+    console.log("Aqui",objetoProjetoFinal);
+    console.log("Alo",formData);
+
 
     try {
       const resposta = await fetch(`http://localhost:5000/republicas`, {
@@ -91,7 +97,7 @@ const FormRepublica = () => {
       } else {
         console.log("República cadastrada com sucesso");
         alert("República cadastrada com sucesso!");
-        setobjetoProjeto({
+        setObjetoProjeto({
           Features: [],
           pais: "",
           cep: "",
@@ -116,7 +122,7 @@ const FormRepublica = () => {
     <>
       <Navbar />
       <div className="container">
-        <style>
+        {/* <style>
           {`
               .section {
                 display: flex;
@@ -134,12 +140,12 @@ const FormRepublica = () => {
                 margin: 0 0 10px 0;
               }
             `}
-        </style>
+        </style> */}
         <div className="section mt-5">
           <h3>Adicione informações essenciais</h3>
           <EssentialInfo
             objetoProjeto={objetoProjeto}
-            setobjetoProjeto={setobjetoProjeto}
+            setObjetoProjeto={setObjetoProjeto}
             values={essentialInfo}
             onUpdate={(key, value) => setEssentialInfo({ ...essentialInfo, [key]: value })}
           />
@@ -152,7 +158,7 @@ const FormRepublica = () => {
         </div>
         <HighlightFeatures
           objetoProjeto={objetoProjeto}
-          setobjetoProjeto={setobjetoProjeto}
+          setObjetoProjeto={setObjetoProjeto}
           onToggle={toggleFeature}
         />
         <div className="section mt-5">
@@ -162,7 +168,7 @@ const FormRepublica = () => {
         </div>
         <PropertyAd
           objetoProjeto={objetoProjeto}
-          setobjetoProjeto={setobjetoProjeto}
+          setObjetoProjeto={setObjetoProjeto}
         />
 
         <div className="section mt-5">
@@ -172,7 +178,7 @@ const FormRepublica = () => {
         </div>
         <DefinirEndereco
           objetoProjeto={objetoProjeto}
-          setobjetoProjeto={setobjetoProjeto}
+          setObjetoProjeto={setObjetoProjeto}
         />
       </div>
       <div className="section mt-5">

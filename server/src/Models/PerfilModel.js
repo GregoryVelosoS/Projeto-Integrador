@@ -8,13 +8,13 @@ const conexao = mysql.createPool(db);
 export async function createPerfil(perfil) {
     const sql = `
         INSERT INTO perfil (
-            descricao, local_moradia,
+            descricao, local_projeto,
             telefone, redes, bio, caminho_foto_perfil, id_usuario
         ) VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
-        perfil.descricao, perfil.local_moradia, perfil.telefone,
+        perfil.descricao, perfil.local_projeto, perfil.telefone,
         perfil.redes, perfil.bio, perfil.caminho_foto_perfil, perfil.id_usuario // Incluído corretamente
     ];
 
@@ -70,18 +70,17 @@ export async function updatePerfil(perfil, imageFile, id) {
     const sql = `
         UPDATE perfil SET 
             descricao = ?,
-            local_moradia = ?,
+            local_projeto = ?,
             telefone = ?,
             redes = ?,
             bio = ?,
-            caminho_foto_perfil = ?,
+            caminho_foto_perfil = ?
         WHERE id_usuario = ?
     `;
 
     const params = [
         perfil.descricao || '',
-        perfil.estado_civil || '',
-        perfil.local_moradia || '',
+        perfil.local_projeto || '',
         perfil.telefone || '',
         perfil.redes || '',
         perfil.bio || '',

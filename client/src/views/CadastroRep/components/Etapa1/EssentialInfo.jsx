@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useObjeto } from "../ObjectContext";
 
 const EssentialInfo = () => {
-  const { objetoProjeto, setobjetoProjeto } = useObjeto();
+  const { objetoProjeto, setObjetoProjeto } = useObjeto();
 
   const MIN_VALUE = 0;
   const MAX_VALUE = 10;
@@ -21,7 +21,7 @@ const EssentialInfo = () => {
       ...prevValues,
       [key]: numericValue,
     }));
-    setobjetoProjeto((prevObjeto) => ({
+    setObjetoProjeto((prevObjeto) => ({
       ...prevObjeto,
       [key]: numericValue,
     }));

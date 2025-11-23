@@ -2,7 +2,7 @@ import React from "react";
 import { useObjeto } from "../ObjectContext";
 
 const AccommodationSelector = () => {
-  const { objetoProjeto, setobjetoProjeto } = useObjeto();
+  const { objetoProjeto, setObjetoProjeto } = useObjeto();
 
   const options = [
     { name: "Casa", icon: <i className="bi bi-house-door feature-icon"></i> },
@@ -11,7 +11,7 @@ const AccommodationSelector = () => {
 
   const alterarObjeto = (key, value) => {
     console.log(objetoProjeto);
-    setobjetoProjeto((prevState) => ({
+    setObjetoProjeto((prevState) => ({
       ...prevState,
       [key]: value,
     }));

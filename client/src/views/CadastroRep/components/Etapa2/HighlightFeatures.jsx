@@ -1,24 +1,24 @@
 import React from "react";
 
-const HighlightFeatures = ({ objetoProjeto, setobjetoProjeto, onToggle }) => {
+const HighlightFeatures = ({ objetoProjeto, setObjetoProjeto, onToggle }) => {
   // Lista de itens organizados por seções
   const sections = [
     {
       title: "Modalidades",
       items: [
-        { name: "Futebol", icon: <i class='fas fa-futbol' style='font-size:24px'></i> },
-        { name: "Tênis", icon: <i class='fas fa-baseball-ball' style='font-size:24px'></i> },
-        { name: "Basquete", icon: <i class='fas fa-basketball-ball' style='font-size:24px'></i> },
-        { name: "Vôlei", icon: <i class='fas fa-volleyball-ball' style='font-size:24px'></i> },
-        { name: "Ping Pong", icon: <i class='fas fa-table-tennis' style='font-size:24px'></i> },
-        { name: "Ciclismo", icon: <i class="bi bi-bicycle"></i> },
+         { name: "Futebol", icon: <i className='fas fa-futbol' style={{fontSize:'24px'}}></i> },
+         { name: "Tênis", icon: <i className='fas fa-baseball-ball'style={{fontSize:'24px'}}></i> },
+         { name: "Basquete", icon: <i className='fas fa-basketball-ball' style={{fontSize:'24px'}}></i> },
+         { name: "Vôlei", icon: <i className='fas fa-volleyball-ball'style={{fontSize:'24px'}}></i> },
+         { name: "Ping Pong", icon: <i className='fas fa-table-tennis' style={{fontSize:'24px'}}></i> },
+         { name: "Ciclismo", icon: <i className="bi bi-bicycle"></i> },
       ],
     },
   ];
 
   const handleToggle = (name) => {
     // Atualiza o objeto global com a alternância da feature
-    setobjetoProjeto((prevObjeto) => {
+    setObjetoProjeto((prevObjeto) => {
       const updatedFeatures = prevObjeto.Features.includes(name)
         ? prevObjeto.Features.filter((feature) => feature !== name)
         : [...prevObjeto.Features, name];

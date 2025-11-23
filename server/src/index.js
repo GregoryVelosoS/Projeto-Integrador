@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
 
 // Configuração de CORS
 var corsOptions = {
-    origin: 'http://localhost',
+    origin: '*',
     optionsSuccessStatus: 200 // Para navegadores mais antigos
 };
 app.use(cors(corsOptions));

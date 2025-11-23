@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useObjeto } from "../ObjectContext"; 
 
 const RoomDistribution = ({ onChange }) => {
-  const { objetoProjeto, setobjetoProjeto } = useObjeto(); // Pegando valores do contexto
+  const { objetoProjeto, setObjetoProjeto } = useObjeto(); // Pegando valores do contexto
 
   const [selected, setSelected] = useState("");
 
@@ -13,7 +13,7 @@ const RoomDistribution = ({ onChange }) => {
     onChange(type); // Atualiza o estado no componente pai ou em um contexto
 
     // Atualiza o objeto global com a seleção do tipo de quarto
-    setobjetoProjeto((prevObjeto) => ({
+    setObjetoProjeto((prevObjeto) => ({
       ...prevObjeto,
       TipoDeQuarto: type,
     }));

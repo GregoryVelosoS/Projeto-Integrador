@@ -1,8 +1,8 @@
 const db = {
     host:'localhost',
     user:'root',
-    password:'',
-    database:'labdatabase'
+    password:'usbw',
+    database:'unisport'
 } 
 
 export default db;

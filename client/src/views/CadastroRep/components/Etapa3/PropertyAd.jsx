@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
-const PropertyAd = ({ objetoProjeto = {}, setobjetoProjeto }) => {
+const PropertyAd = ({ objetoProjeto = {}, setObjetoProjeto }) => {
   // Inicializa os estados com os valores de `objetoProjeto` ou valores padrão
   const [titulo, setTitulo] = useState(objetoProjeto.titulo || '');
   const [image, setImage] = useState(objetoProjeto.image || null);
   const [descricao, setDescricao] = useState(objetoProjeto.descricao || '');
 
   useEffect(() => {
-    if (setobjetoProjeto) {
-      setobjetoProjeto((prevObjeto) => ({
+    if (setObjetoProjeto) {
+      setObjetoProjeto((prevObjeto) => ({
         ...prevObjeto,
         titulo,
         image,
         descricao,
       }));
     } else {
-      console.error('setobjetoProjeto não está definido');
+      console.error('setObjetoProjeto não está definido');
     }
-  }, [titulo, image, descricao, setobjetoProjeto]);
+  }, [titulo, image, descricao, setObjetoProjeto]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0]; // Obtém apenas o primeiro arquivo selecionado
     if (file) {
       setImage(file);
-      setobjetoProjeto((prev) => ({
+      setObjetoProjeto((prev) => ({
         ...prev,
         image: file,
       }));
@@ -32,7 +32,7 @@ const PropertyAd = ({ objetoProjeto = {}, setobjetoProjeto }) => {
 
   const handleRemoveImage = () => {
     setImage(null);
-    setobjetoProjeto((prev) => ({
+    setObjetoProjeto((prev) => ({
       ...prev,
       image: null,
     }));
@@ -113,6 +113,7 @@ const PropertyAd = ({ objetoProjeto = {}, setobjetoProjeto }) => {
           <input
             id="title"
             type="text"
+            name="name"
             className="form-control"
             placeholder="Ex: Casa"
             value={titulo}

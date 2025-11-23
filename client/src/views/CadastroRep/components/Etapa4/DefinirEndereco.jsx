@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
+const DefinirEndereco = ({ objetoProjeto, setObjetoProjeto }) => {
   // Função para buscar informações do CEP
   useEffect(() => {
     const fetchEndereco = async () => {
@@ -23,7 +23,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
             `https://viacep.com.br/ws/${objetoProjeto.cep}/json/`
           );
           if (!response.data.erro) {
-            setobjetoProjeto({
+            setObjetoProjeto({
               ...objetoProjeto,
               endereco: response.data.logradouro,
               bairro: response.data.bairro,
@@ -38,7 +38,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
     };
 
     fetchEndereco();
-  }, [objetoProjeto.cep, setobjetoProjeto]);
+  }, [objetoProjeto.cep, setObjetoProjeto]);
 
   const [position, setPosition] = useState([0, 0]); // Posição inicial do mapa
 
@@ -56,7 +56,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
           )
           .then((response) => {
             const { address } = response.data;
-            setobjetoProjeto({
+            setObjetoProjeto({
               ...objetoProjeto,
               endereco: address.road || "",
               bairro: address.suburb || "",
@@ -82,7 +82,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
             placeholder="País"
             value={objetoProjeto.pais}
             onChange={(e) =>
-              setobjetoProjeto({ ...objetoProjeto, pais: e.target.value })
+              setObjetoProjeto({ ...objetoProjeto, pais: e.target.value })
             }
             required
           />
@@ -96,7 +96,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="CEP"
                 value={objetoProjeto.cep}
                 onChange={(e) =>
-                  setobjetoProjeto({ ...objetoProjeto, cep: e.target.value })
+                  setObjetoProjeto({ ...objetoProjeto, cep: e.target.value })
                 }
                 required
               />
@@ -110,7 +110,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="Endereço"
                 value={objetoProjeto.endereco}
                 onChange={(e) =>
-                  setobjetoProjeto({
+                  setObjetoProjeto({
                     ...objetoProjeto,
                     endereco: e.target.value,
                   })
@@ -129,7 +129,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="Bairro"
                 value={objetoProjeto.bairro}
                 onChange={(e) =>
-                  setobjetoProjeto({ ...objetoProjeto, bairro: e.target.value })
+                  setObjetoProjeto({ ...objetoProjeto, bairro: e.target.value })
                 }
                 required
               />
@@ -143,7 +143,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="Cidade/Município"
                 value={objetoProjeto.cidade}
                 onChange={(e) =>
-                  setobjetoProjeto({ ...objetoProjeto, cidade: e.target.value })
+                  setObjetoProjeto({ ...objetoProjeto, cidade: e.target.value })
                 }
                 required
               />
@@ -159,7 +159,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="Estado"
                 value={objetoProjeto.estado}
                 onChange={(e) =>
-                  setobjetoProjeto({ ...objetoProjeto, estado: e.target.value })
+                  setObjetoProjeto({ ...objetoProjeto, estado: e.target.value })
                 }
                 required
               />
@@ -173,7 +173,7 @@ const DefinirEndereco = ({ objetoProjeto, setobjetoProjeto }) => {
                 placeholder="Apartamento"
                 value={objetoProjeto.apto}
                 onChange={(e) =>
-                  setobjetoProjeto({ ...objetoProjeto, apto: e.target.value })
+                  setObjetoProjeto({ ...objetoProjeto, apto: e.target.value })
                 }
                 required
               />

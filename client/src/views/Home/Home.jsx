@@ -102,7 +102,7 @@ function Home() {
                         margin: 'auto',
                         cursor: 'pointer',
                       }}
-                      onClick={() => handleNavigate(`${rep.id_republica}`)}
+                      onClick={() => handleNavigate(`${rep.id_projeto}`)}
                     >
                       <img
                         src={`http://localhost:5000/public/${rep.caminhoFoto}`}

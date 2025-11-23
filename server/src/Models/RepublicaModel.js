@@ -51,15 +51,15 @@ export async function createprojeto(projeto, imageFile) {
     //     throw new Error(`Erro ao salvar a imagem: ${error.message}`);
     // }
 
-    const acomodacaoMapping = {
-        Casa: "Casa",
-        Apartamento: "Apartamento",
-    };
+    // const acomodacaoMapping = {
+    //     Casa: "Casa",
+    //     Apartamento: "Apartamento",
+    // };
 
-    const tipoAcomodacao = acomodacaoMapping[projeto.name];
-    if (!tipoAcomodacao) {
-        throw new Error("O campo 'name' deve ser 'Casa' ou 'Apartamento'.");
-    }
+    // const tipoAcomodacao = acomodacaoMapping[projeto.name];
+    // if (!tipoAcomodacao) {
+    //     throw new Error("O campo 'name' deve ser 'Casa' ou 'Apartamento'.");
+    // }
 
     const campos = {
         titulo: projeto.titulo,
